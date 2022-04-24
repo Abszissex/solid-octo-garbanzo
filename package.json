@@ -2,11 +2,11 @@
   "name": "solid-octo-garbanzo",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start:dev": "node_modules/.bin/ts-node src/index.ts",
     "clean": "rm -rf dist",
     "build": "node_modules/.bin/tsc",
+    "start:dev": "node_modules/.bin/ts-node src/index.ts",
     "start:prod": "node dist/index.js",
     "lint": "node_modules/.bin/eslint src/** --ext .ts",
     "lint:fix": "node_modules/.bin/eslint src/** --fix",
