@@ -5,10 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "start:dev": "node_modules/.bin/ts-node src/index.ts",
+    "clean": "rm -rf dist",
     "build": "node_modules/.bin/tsc",
     "start:prod": "node dist/index.js",
-    "lint": "node_modules/.bin/eslint src/**",
-    "lint:fix": "node_modules/.bin/eslint src/** --fix"
+    "lint": "node_modules/.bin/eslint src/** --ext .ts",
+    "lint:fix": "node_modules/.bin/eslint src/** --fix",
+    "test": "node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,14 @@
   },
   "homepage": "https://github.com/Abszissex/solid-octo-garbanzo#readme",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.14.0",
     "eslint-config-google": "^0.14.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
-    "typescript": "4.6.3"
+    "typescript": "^4.6.3"
   }
 }
