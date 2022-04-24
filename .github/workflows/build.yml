@@ -10,7 +10,7 @@ jobs:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
@@ -18,16 +18,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  build:
-    name: Build
+  node:
+    name: Node
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cmd: ['lint', 'build', 'test']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Build
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
       - name: NPM install
         run: npm install
       - name: Build
-        run: npm run build
+        run: npm run ${{matrix.cmd}}
